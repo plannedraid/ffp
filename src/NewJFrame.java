@@ -10,6 +10,13 @@
  */
 public class NewJFrame extends javax.swing.JFrame {
 
+    int getFib;
+    int getPrime;
+    int getFact;
+    int fact = 1;
+    boolean flag = false;
+    int sum;
+
     /**
      * Creates new form NewJFrame
      */
@@ -29,17 +36,17 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        factTF = new javax.swing.JTextField();
+        factBtn = new javax.swing.JButton();
+        factLbl = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        primeTF = new javax.swing.JTextField();
+        primeBtn = new javax.swing.JButton();
+        primeLbl = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
+        fibTF = new javax.swing.JTextField();
+        fibBtn = new javax.swing.JButton();
+        fibLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,93 +54,120 @@ public class NewJFrame extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Numbers");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 130, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 130, 30));
 
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel2.setText("Enter a number and click the button to find the factorial.");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 490, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 490, 30));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        factTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                factTFActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 100, 20));
+        jPanel1.add(factTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 100, 30));
 
-        jButton1.setText("Factorial");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        factBtn.setText("Factorial");
+        factBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                factBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 80, -1));
+        jPanel1.add(factBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 80, -1));
 
-        jLabel3.setText("...");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 120, 20));
+        factLbl.setText("...");
+        jPanel1.add(factLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, 120, 20));
 
         jLabel4.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel4.setText("Enter a number to determine if its a prime number.");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 490, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 490, 30));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        primeTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                primeTFActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 100, 20));
+        jPanel1.add(primeTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 100, 30));
 
-        jButton2.setText("Prime?");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 80, -1));
+        primeBtn.setText("Prime?");
+        primeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                primeBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(primeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 80, -1));
 
-        jLabel5.setText("...");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 120, 20));
+        primeLbl.setText("...");
+        jPanel1.add(primeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 120, 20));
 
         jLabel6.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel6.setText("Enter a number and click the button to find the corresponding fibonacci number.");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 570, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 570, 30));
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        fibTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                fibTFActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 100, 20));
+        jPanel1.add(fibTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 100, 30));
 
-        jButton3.setText("Fibonacci");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 80, -1));
+        fibBtn.setText("Fibonacci");
+        fibBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fibBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(fibBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 80, -1));
 
-        jLabel7.setText("...");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 120, 20));
+        fibLbl.setText("...");
+        jPanel1.add(fibLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 120, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void factTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_factTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_factTFActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void primeTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_primeTFActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void fibTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fibTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_fibTFActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void factBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_factBtnActionPerformed
+        getFact = Integer.parseInt(factTF.getText());
+        factor(getFact);
+        String convert = String.valueOf(fact);
+        factLbl.setText(convert);
+    }//GEN-LAST:event_factBtnActionPerformed
+
+    private void primeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_primeBtnActionPerformed
+        getPrime = Integer.parseInt(primeTF.getText());
+        prime();
+    }//GEN-LAST:event_primeBtnActionPerformed
+
+    private void fibBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fibBtnActionPerformed
+        getFib = Integer.parseInt(fibTF.getText());
+        fib(getFib);
+        String convert = String.valueOf(sum);
+        fibLbl.setText(convert);
+    }//GEN-LAST:event_fibBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,20 +204,55 @@ public class NewJFrame extends javax.swing.JFrame {
         });
     }
 
+    public int fib(int n1) {
+        int f1 = 0;
+        int f2 = 1;
+        for (int i = 1; i <= getFib; i++) {
+            sum = f1 + f2;
+            f1 = f2;
+            f2 = sum;
+        }
+        return sum;
+    }
+
+    public int factor(int n1) {
+
+        for (int i = 1; i <= n1; i++) {
+            fact = fact * i;
+        }
+        return fact;
+    }
+
+    public void prime() {
+        for (int i = 2; i <= getPrime / 2; i++) {
+            if (getPrime % i == 0) {
+                flag = true;
+                break;
+            } else {
+                flag = false;
+            }
+        }
+        if (!flag) {
+            primeLbl.setText("Prime");
+        } else if (flag) {
+            primeLbl.setText("Not Prime");
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton factBtn;
+    private javax.swing.JLabel factLbl;
+    private javax.swing.JTextField factTF;
+    private javax.swing.JButton fibBtn;
+    private javax.swing.JLabel fibLbl;
+    private javax.swing.JTextField fibTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton primeBtn;
+    private javax.swing.JLabel primeLbl;
+    private javax.swing.JTextField primeTF;
     // End of variables declaration//GEN-END:variables
 }
